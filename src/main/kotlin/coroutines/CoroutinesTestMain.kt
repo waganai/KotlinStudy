@@ -10,7 +10,7 @@ class CoroutinesTestMain {
 }
 
 fun main() {
-    GlobalScope.launch {
+    val job = GlobalScope.launch {
         for (i in 0..9) {
             println("子协程执行第$i 次")
 
@@ -22,6 +22,12 @@ fun main() {
         println("子协程执行结束")
     }
 
+    println("job.isActive : ${job.isActive}")
+    println("job.isCompleted : ${job.isCompleted}")
+
     sleep(10000L)
     println("主协程执行结束")
+
+    println("job.isActive : ${job.isActive}")
+    println("job.isCompleted : ${job.isCompleted}")
 }
