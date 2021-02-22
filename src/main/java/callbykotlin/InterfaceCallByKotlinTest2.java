@@ -1,4 +1,4 @@
-package callskotlin;
+package callbykotlin;
 
 public interface InterfaceCallByKotlinTest2 {
     public int function1(int a, int b);

@@ -1,6 +1,6 @@
 package callsjava
 
-import callskotlin.InterfaceCallByKotlinTest1
+import callbykotlin.InterfaceCallByKotlinTest1
 
 class CallJavaInterfaceTestMain {
 }

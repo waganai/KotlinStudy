@@ -1,6 +1,6 @@
 package callsjava
 
-import callskotlin.CallByKotlinTestMain
+import callbykotlin.CallByKotlinTestMain
 import java.util.*
 
 class CallJavaTestMain {
