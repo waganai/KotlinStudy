@@ -1,5 +1,6 @@
 package callskotlin;
 
+import callbyjava.ClassCallByJavaTest;
 import callbyjava.DataCallByJava;
 import callbyjava.DataCallByJavaTest;
 
@@ -7,7 +8,17 @@ public class CallKotlinTestMain {
     public static void main(String[] args) {
         CallKotlinTestMain callKotlinTestMain = new CallKotlinTestMain();
 //       callKotlinTestMain.callKotlinDataClassAttribute();
-        callKotlinTestMain.callKotlinPackageFunction();
+//        callKotlinTestMain.callKotlinPackageFunction();
+        callKotlinTestMain.callKotlinClassFunction();
+    }
+
+    private void callKotlinClassFunction() {
+        ClassCallByJavaTest classCallByJavaTest = new ClassCallByJavaTest();
+        System.out.println("classCallByJavaTest.getName() = " + classCallByJavaTest.getName());
+        // 注意 @JvmField 注解的作用
+        System.out.println("classCallByJavaTest.name1 = " + classCallByJavaTest.name1);
+        System.out.println("classCallByJavaTest.birthDate = " + classCallByJavaTest.birthDate);
+        classCallByJavaTest.function1();
     }
 
     private void callKotlinPackageFunction() {
