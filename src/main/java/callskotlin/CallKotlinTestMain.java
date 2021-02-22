@@ -5,6 +5,8 @@ import callbyjava.DataCallByJava;
 import callbyjava.DataCallByJavaTest;
 import callbyjava.ObjectCallByJavaTest;
 
+import java.text.ParseException;
+
 public class CallKotlinTestMain {
     public static void main(String[] args) {
         CallKotlinTestMain callKotlinTestMain = new CallKotlinTestMain();
@@ -12,7 +14,8 @@ public class CallKotlinTestMain {
 //        callKotlinTestMain.callKotlinPackage();
 //        callKotlinTestMain.callKotlinClass();
 //        callKotlinTestMain.callKotlinClassStatic();
-        callKotlinTestMain.callKotlinObject();
+//        callKotlinTestMain.callKotlinObject();
+        callKotlinTestMain.callKotlinException();
     }
 
     private void callKotlinClass() {
@@ -38,6 +41,17 @@ public class CallKotlinTestMain {
         System.out.println("ObjectCallByJavaTest.name1 = " + ObjectCallByJavaTest.name1);
         System.out.println("ObjectCallByJavaTest.birtDate = " + ObjectCallByJavaTest.birtDate);
         ObjectCallByJavaTest.INSTANCE.function1();
+    }
+
+    private void callKotlinException() {
+        ClassCallByJavaTest classCallByJavaTest = new ClassCallByJavaTest();
+        try {
+            classCallByJavaTest.functionException();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("callKotlinException() finish");
     }
 
     private void callKotlinPackageFunction() {
