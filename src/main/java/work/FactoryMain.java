@@ -30,6 +30,7 @@ public class FactoryMain {
 class Factory {
     volatile int bicycleInFactory = 0;
 
+    // inventory 工厂初始库存
     public Factory(int inventory) {
         bicycleInFactory = inventory;
     }
@@ -89,6 +90,9 @@ class Store {
 
     private Factory bicycleFactory;
 
+    // name 商店名称，
+    // inventory 初始库存，
+    // factory 货源工厂
     public Store(String name, int inventory, Factory factory) {
         storeName = name;
         bicycleInStore = inventory;
