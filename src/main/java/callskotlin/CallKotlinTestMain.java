@@ -4,6 +4,9 @@ import callbyjava.ClassCallByJavaTest;
 import callbyjava.DataCallByJava;
 import callbyjava.DataCallByJavaTest;
 import callbyjava.ObjectCallByJavaTest;
+import variable.ConstMain;
+import variable.ConstMain2Kt;
+import variable.ConstMainKt;
 
 import java.text.ParseException;
 
@@ -15,7 +18,8 @@ public class CallKotlinTestMain {
 //        callKotlinTestMain.callKotlinClass();
 //        callKotlinTestMain.callKotlinClassStatic();
 //        callKotlinTestMain.callKotlinObject();
-        callKotlinTestMain.callKotlinException();
+//        callKotlinTestMain.callKotlinException();
+        callKotlinTestMain.callKotlinClassStatic();
     }
 
     private void callKotlinClass() {
@@ -28,6 +32,8 @@ public class CallKotlinTestMain {
     }
 
     private void callKotlinClassStatic() {
+        System.out.println("topConstVal = " + ConstMainKt.topConstVal);
+
         System.out.println("ClassCallByJavaTest.Companion.getId() = " + ClassCallByJavaTest.Companion.getId());
         // 注意 @JvmField 注解的作用
         System.out.println("ClassCallByJavaTest.id1 = " + ClassCallByJavaTest.id1);
