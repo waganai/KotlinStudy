@@ -15,5 +15,8 @@ public class ArrayGenericTestMain {
         System.out.println("arrayList' type is" + arrayList.getClass());
 
 //        ArrayList<Object> objectList = arrayList;
+
+        ArrayList arrayList1 = new ArrayList();
+        ArrayList arrayList2 = new ArrayList<String>();
     }
 }
