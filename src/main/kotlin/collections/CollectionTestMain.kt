@@ -107,12 +107,68 @@ class CollectionTestMain {
                 print("$it ")
             }
         }
+
+        @JvmStatic
+        fun listIndexFunc() {
+            var list1 = mutableListOf(
+                Element(
+                    "" +
+                            "西游记", 1
+                ), Element(
+                    "" +
+                            "红楼梦", 2
+                ), Element(
+                    "" +
+                            "三国演义", 3
+                ), Element(
+                    "" +
+                            "水浒传", 4
+                )
+            )
+
+            list1.forEach { println("$it.name, ${it.id}") }
+
+            list1[0] = Element("封神榜", 0)
+            list1[1].id = 233
+
+            println()
+
+            list1.forEach { println("$it.name, ${it.id}") }
+        }
+
+        @JvmStatic
+        fun mapIndexFunc() {
+            var map = mutableMapOf(
+                "百度" to Element(
+                    "百度", 0
+                ), "阿里" to Element(
+                    "阿里", 1
+                ),
+                "腾讯" to Element(
+                    "腾讯 ", 2
+                )
+            )
+
+            map.forEach { (key, value) -> println("$key, $value") }
+
+            map["百度"] = Element("百度百度度", 10)
+            map["腾讯"]?.id = 0
+            map["字节跳动"] = Element("字节跳动", 3)
+
+            println()
+
+            map.forEach { (key, value) -> println("$key, $value") }
+        }
     }
+
+    data class Element(var name: String, var id: Int)
 }
 
 fun main() {
 //    CollectionTestMain.mapAndFilter()
 //    CollectionTestMain.sumFoldReduce()
 //    CollectionTestMain.groupBy()
-    CollectionTestMain.flattenFlatMap()
+//    CollectionTestMain.flattenFlatMap()
+//    CollectionTestMain.listIndexFunc()
+    CollectionTestMain.mapIndexFunc()
 }
