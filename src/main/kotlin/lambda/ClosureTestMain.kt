@@ -1,14 +1,33 @@
 package lambda
 
 class ClosureTestMain {
+    companion object {
+        @JvmStatic
+        fun func1() {
+            val func1 = closureFunc()
+            val func2 = closureFunc()
+
+            func1()
+            func1.invoke()
+            func1()
+            func1.invoke()
+
+            func2.invoke()
+        }
+
+        @JvmStatic
+        fun func2() {
+            test
+
+            test
+            println("test = $test")
+        }
+    }
 }
 
 fun main() {
-    val func = closureFunc()
-    func()
-    func.invoke()
-    func()
-    func.invoke()
+    ClosureTestMain.func1()
+    ClosureTestMain.func2()
 }
 
 fun closureFunc(): () -> Unit {
@@ -19,4 +38,10 @@ fun closureFunc(): () -> Unit {
 
         println("sum = $sum")
     }
+}
+
+val test = if (5 > 3) {
+    println("yes")
+} else {
+    println("no")
 }
