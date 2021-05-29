@@ -1,9 +1,11 @@
 package test
 
 import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
 
 class GsonTestMain(
+    @SerializedName(value = "nickName", alternate = ["nickname, nick_name"])
     var name: String = "小明",
     var age: Int = 12,
     var sex: String = "男生"
@@ -65,10 +67,64 @@ class GsonTestMain(
             println("list2 is Array<GsonTestMain> = ${list2 is List<GsonTestMain>}")
             println()
         }
+
+        fun funClass() {
+            val gson = Gson()
+
+            val str1 =
+                "{\"name\":\"小明0\",\"nickName\":\"小明1\",\"nickname\":\"小明2\",\"nick_name\":\"小明3\",\"age\":12,\"sex\":\"男生\"}"
+            val value1 = gson.fromJson(str1, GsonTestMain::class.java)
+            val str2 =
+                "{\"name\":\"小红0\",\"nickname\":\"小红2\",\"nick_name\":\"小红3\",\"age\":11,\"sex\":\"女生\"}"
+            val value2 = gson.fromJson(str2, GsonTestMain::class.java)
+            val str3 =
+                "{\"name\":\"小红0\",\"nickname\":\"小红2\",\"nick_name\":\"小红3\",\"age\":11,\"sex\":\"女生\"}"
+            val value3 = gson.fromJson(str3, GsonTestMain2::class.java)
+            val str4 =
+                "{\"name\":\"小红0\",\"nickname\":\"小红2\",\"nick_name\":\"小红3\",\"age\":11,\"sex\":\"女生\"}"
+            val value4 = gson.fromJson(str4, GsonTestMain3::class.java)
+            val str5 =
+                "{\"name\":\"小红0\",\"nickname\":\"小红2\",\"nick_name\":\"小红3\",\"age\":11,\"sex\":\"女生\"}"
+            val value5 = gson.fromJson(str5, GsonTestMain4::class.java)
+
+            println("value1 {name = ${value1.name}, age = ${value1.age}, sex = ${value1.sex}")
+            println("value2 {name = ${value2.name}, age = ${value2.age}, sex = ${value2.sex}")
+            println("value3 {name = ${value3.name}, age = ${value3.age}, sex = ${value3.sex}")
+            println("value4 {name = ${value4.name}, age = ${value4.age}, sex = ${value4.sex}")
+            println("value5 {name = ${value5.name}, age = ${value5.age}, sex = ${value5.sex}")
+        }
+    }
+}
+
+class GsonTestMain2 {
+    @SerializedName(value = "nickName", alternate = ["nickname, nick_name"])
+    var name: String = "小明"
+    var age: Int = 12
+    var sex: String = "男生"
+}
+
+class GsonTestMain3 {
+    @SerializedName(value = "nickName", alternate = ["nickname, nick_name"])
+    var name: String? = null
+    var age: Int = 12
+    var sex: String = "男生"
+}
+
+class GsonTestMain4(name: String, age: Int, sex: String) {
+     @SerializedName(value = "nickName", alternate = ["nickname, nick_name"])
+    lateinit var name: String
+    var age: Int
+    lateinit var sex: String
+
+    init {
+        this.name = name
+        this.age = age
+        this.sex = sex
     }
 }
 
 fun main() {
 //    GsonTestMain.funSimpleTransform()
-    GsonTestMain.funCollectionTransform()
+//    GsonTestMain.funCollectionTransform()
+    GsonTestMain.funClass()
 }
